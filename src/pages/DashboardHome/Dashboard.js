@@ -107,7 +107,9 @@ function Dashboard(props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
-
+  React.useEffect(() => {
+    fetch();
+  }, []);
   return (
     <div>
       <Box>
