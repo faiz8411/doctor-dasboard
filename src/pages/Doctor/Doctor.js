@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Doctor.css";
 const Doctor = () => {
-  const [doctors, setPagol] = useState([]);
+  const [doctors, setDoctor] = useState([]);
   useEffect(() => {
     const url =
-      "https://raw.githubusercontent.com/faiz8411/doctor-dasboard/main/public/doctor_detail.json";
+      "https://raw.githubusercontent.com/faiz8411/task-dashboard/main/PatientDetails.json";
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setPagol(data));
+      .then((data) => setDoctor(data));
   }, []);
   //   console.log(pagol);
   return (
@@ -15,6 +15,7 @@ const Doctor = () => {
       {doctors.map((pd) => (
         // <li key={pd.name}>{pd.name}</li>
         <div className="docContainer">
+          {" "}
           <div className="doc"></div>
           <div>
             <div className="docS">

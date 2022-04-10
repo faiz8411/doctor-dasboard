@@ -3,13 +3,19 @@ import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
+import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import PrintIcon from "@mui/icons-material/Print";
+import EditLocationAltIcon from "@mui/icons-material/EditLocationAlt";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -54,36 +60,29 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchAppBar({ name }) {
   return (
-    <Box sx={{ flexGrow: 1 }} style={{ marginTop: "-60px" }}>
+    <Box sx={{ flexGrow: 1 }} style={{ marginTop: "8px" }}>
       <AppBar position="static" style={{ background: "#DEECF1" }}>
         <Toolbar>
-          <AccountBoxIcon style={{ color: "blue" }} />
           <Typography
-            style={{ marginRight: "580px", color: "black" }}
+            style={{ marginRight: "500px", color: "blue" }}
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            {name}
+            Patient List
+            <ArrowForwardIosIcon style={{ height: "15px" }} />{" "}
+            <span style={{ color: "gray" }}>{name}</span>
           </Typography>
-          <Search style={{ color: "black" }}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-          <Fab
-            color="primary"
-            aria-label="add"
-            style={{ height: "30px", width: "30px", borderRadius: "50" }}
+
+          <PrintIcon style={{ color: "gray", marginRight: "10px" }} />
+
+          <Typography
+            style={{ color: "gray", background: "white", borderRadius: "5px" }}
           >
-            <AddIcon />
-          </Fab>
-          <NotificationsNoneIcon style={{ color: "black" }} />
+            <EditLocationAltIcon style={{ color: "gray", height: "20px" }} />
+            Edit Patient
+          </Typography>
         </Toolbar>
       </AppBar>
     </Box>
