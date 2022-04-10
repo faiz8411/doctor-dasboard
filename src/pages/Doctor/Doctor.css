@@ -1,0 +1,23 @@
+.docContainer{
+    
+    display: flex;
+}
+
+
+.doc {
+    height: 40px;
+    width: 40px;
+    background-color: rgb(77, 202, 68);
+    border-radius: 50%;
+    margin-top: 10px;
+    padding: 20px;
+    display: inline-block;
+}
+.specification{
+    text-align: left;
+    margin-bottom: 40px;
+    color: gray;
+}
+.docS{
+    display: block;
+}

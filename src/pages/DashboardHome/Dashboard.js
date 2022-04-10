@@ -21,11 +21,22 @@ import HelpIcon from "@mui/icons-material/Help";
 
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import "./Dashboard.css";
+import Doctor from "../Doctor/Doctor";
+import { Link, Outlet } from "react-router-dom";
+import SearchAppBar from "./TopMenu/TopMenu";
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [doctor, setDoctor] = React.useState();
+  React.useEffect(() => {
+    const url =
+      "https://raw.githubusercontent.com/faiz8411/doctor-dasboard/main/public/doctor_detail.json";
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setDoctor(data));
+  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -79,10 +90,12 @@ function Dashboard(props) {
           <CalendarTodayIcon style={{ color: "black" }} />
           <span style={{ marginLeft: "10px" }}>Calender</span>
         </ListItem>
-        <ListItem style={{ color: "black", marginTop: "20px" }}>
-          <AccessibilityIcon style={{ color: "black" }} />
-          <span style={{ marginLeft: "10px" }}>Patient List</span>{" "}
-        </ListItem>
+        <Link to={`/dashboard/patient`}>
+          <ListItem style={{ color: "black", marginTop: "20px" }}>
+            <AccessibilityIcon style={{ color: "black" }} />
+            <span style={{ marginLeft: "10px" }}>Patient List</span>{" "}
+          </ListItem>
+        </Link>
         <ListItem style={{ color: "black", marginTop: "20px" }}>
           <MessageIcon style={{ color: "black" }} />
           <span style={{ marginLeft: "10px" }}>Message</span>{" "}
@@ -102,14 +115,15 @@ function Dashboard(props) {
           <span style={{ marginLeft: "10px" }}>Help?</span>
         </ListItem>
       </div>
+      <div>
+        <Doctor />
+      </div>
     </div>
   );
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
-  React.useEffect(() => {
-    fetch();
-  }, []);
+
   return (
     <div>
       <Box>
@@ -170,7 +184,9 @@ function Dashboard(props) {
             }}
           >
             <Toolbar />
-            <Typography paragraph>content here</Typography>
+            <div>
+              <Outlet></Outlet>
+            </div>
           </Box>
         </Box>
       </Box>
